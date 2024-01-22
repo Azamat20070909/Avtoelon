@@ -56,7 +56,7 @@ class CarGetSer(serializers.ModelSerializer):
 
     class Meta:
         model = Car
-        fields = ['id', 'manzil', 'modeli', 'marka', 'kuzov', 'yoqilgi', 'uzatish', 'uzatma', 'yili', 
+        fields = ['id', 'manzil', 'modeli', 'kuzov', 'yoqilgi', 'uzatish', 'uzatma', 'yili', 
                     'masofa', 'rangi', 'cost', 'photo', 'telefon', 'batafsil']
 
 

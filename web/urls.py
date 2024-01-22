@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from car.views import CarApi
-from user.views import UserApi
+from car.views import CarApi, CarApiList
+from user.views import UserApiList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', CarApi.as_view()),
-    path('user/api/', UserApi.as_view())
+    path('user/api/', UserApiList.as_view()),
+    path('car/<int:id>/', CarApiList.as_view())
 ]
     

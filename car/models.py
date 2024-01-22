@@ -21,7 +21,7 @@ class Locations(models.Model):
 		('toshkent', 'Toshkent')
 		)
 
-    locations = models.CharField(max_length = 50, choices = VILOYAT, default = True)
+    locations = models.CharField(max_length = 50, choices = VILOYAT, default = 'andijon')
 
     def __str__(self):
         return f'{self.locations}'

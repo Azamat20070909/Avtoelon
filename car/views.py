@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Car
-from .serializer import CarSerializer
+from .models import Car,Image
+from .serializer import CarSerializer, CarGetSer
 
 
 from rest_framework.views import APIView
@@ -18,19 +18,24 @@ class CarApi(APIView):
 		return Response(dict_data.data)
 
 	def post(self, request):
-		rasm_list = request.data.getlist('photo', [])
+		rasm_list = request.data.get('image', [])
 		serializer = CarSerializer(data = request.data)
 
 		if serializer.is_valid():
 			Car = serializer.save()
 			for x in rasm_list:
-				t = Image.objects.create(photo = x)
+				t = Image.objects.create(image = x)
 				Car.image.add(t)
 			return Response(serializer.data)
 		return Response(serializer.errors)
 
 
+class CarApiList(APIView):
+	def get(self, request, id):
+		try:
+			a = Car.objects.get(id = id)
+			s = CarGetSer(a)
+			return Response(s.data)
 
-
-
-
+		except Exception as a:
+			return Response({'xabar':f"{a}"})
