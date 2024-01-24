@@ -60,3 +60,4 @@ class CarGetSer(serializers.ModelSerializer):
                     'masofa', 'rangi', 'cost', 'photo', 'telefon', 'batafsil']
 
 
+
